@@ -3,7 +3,7 @@ import http.server
 import socketserver
 
 # Specify the port number you want to use
-PORT = 8000
+PORT = 5000
 
 # Create a request handler by subclassing the BaseHTTPRequestHandler
 class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
@@ -20,7 +20,7 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(b"</body></html>")
 
 # Create a TCP server with the specified port and request handler
-with socketserver.TCPServer(("", PORT), MyHttpRequestHandler) as httpd:
+with socketserver.TCPServer(("0.0.0.0", PORT), MyHttpRequestHandler) as httpd:
     print("Server started on port", PORT)
     
     # Keep the server running until interrupted
